@@ -89,10 +89,6 @@ module ConsulCookbook
         service.options(:systemd, template: 'consul:systemd.service.erb')
         service.options(:sysvinit, template: 'consul:sysvinit.service.erb')
         service.options(:upstart, template: 'consul:upstart.service.erb', executable: new_resource.program)
-
-        if platform_family?('rhel') && node['platform_version'].to_i == 6
-          service.provider(:sysvinit)
-        end
       end
     end
   end
